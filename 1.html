@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="logo" href="vavab.png" type="image">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.O.T.F</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 40px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 25px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        section {
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: black;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid black;
+            padding-bottom: 0.5rem;
+        }
+        .members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .member {
+            background: #ecf0f1;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            width: calc(25% - 1.5rem);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .member img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+            border: 2px solid black;
+        }
+        .roadmap {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .roadmap .step {
+            background: #ecf0f1;
+            border-radius: 8px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+
+
+        .timeline {
+            position: relative;
+            margin: 2rem 50%;
+            padding: 2rem 0;
+            width: 80%;
+            border-left: 4px solid black; /* Grand trait central */
+        }
+
+        .timeline .event {
+            position: relative;
+            width: 45%; /* Chaque événement occupe 45% de la largeur */
+            margin: 1.5rem 0;
+            padding: 1rem 2rem;
+            background: #ecf0f1;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Positionnement gauche/droite*/
+        .timeline .event.left {
+            left: 0;
+            transform: translateX(-110%);
+            text-align: right;
+        }
+
+        .timeline .event.right {
+            left: 0;
+            transform: translateX(10%);
+            text-align: left;
+        }
+
+        /* Points */
+        .timeline .event:before {
+            content: "";
+            position: absolute;
+            top: 50%; 
+            left: 100%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 14px;
+            background-color: black;
+            border: 3px solid white;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+
+        .timeline .event.left:before {
+            left: calc(110% - 1px);
+        }
+
+        .timeline .event.right:before {
+            left: calc(-10% - 1px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline {
+                width: 90%;
+                border-left: 2px solid black;
+            }
+
+            .timeline .event {
+                width: 100%;
+                transform: translateX(0);
+                text-align: left;
+            }
+
+            .timeline .event:before {
+                left: 10px;
+            }
+        }
+        
+        .resources {
+            margin-top: 2rem;
+        }
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .resources ul li {
+            background: #ecf0f1;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .downloads a {
+            display: inline-block;
+            margin: 0.5rem 0;
+            padding: 0.75rem 1.5rem;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .downloads a:hover {
+            background-color: grey;
+        }
+        #scrollTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        #scrollTop:hover {
+            background-color: grey;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>S.O.T.F</h1>
+        <nav>
+            <a href="#members">Membres</a>
+            <a href="#roadmap">Historique</a>
+            <a href="#timeline">Chronologie</a>
+            <a href="#resources">Ressources</a>
+            <a href="#downloads">Téléchargement</a>
+        </nav>
+    </header>
+    <main>
+        <!-- Présentation des membres -->
+        <section id="members">
+            <h2>Membres du Projet</h2>
+            <div class="members">
+                <div class="member">
+                    <img src="https://avatar.iran.liara.run/public/boy" alt="Valentin">
+                    <p><strong>Bac--Lecocq, Valentin</strong></p>
+                    <p><br>Responsable de la création de la map et personnages ainsi que des mécaniques de jeu.</br><br> </br>Tombé dans les jeux vidéo dès un très jeune âge, ma passion pour ce
+                        domaine m’a amené à expérimenter la programmation par le biais du modding de mes jeux favoris, et cela m’a permis de me familiariser avec les outils nécessaires à
+                        la création d’un jeu.</p>
+                </div>
+                <div class="member">
+                    <img src="https://avatar.iran.liara.run/public/girl" alt="Valentina">
+                    <p><strong>Durtez Barrientos, Valentina</strong></p>
+                    <p><br>Responsable de la création des énigmes et du site web.</br><br> </br>Je suis une personne passionnée par l’informatique. Mon aventure
+                        dans ce domaine a commencé en classe de première. Depuis l’annonce de la créa
+                       tion du projet, je me suis intéressée à tous les aspects de la création de jeux, qu’ils
+                        soient techniques ou créatifs. Que ce soit le développement de code, la conception
+                        graphique, ou la narration, chaque étape du processus de création d’un jeu me
+                        fascine et me motive à en apprendre toujours plus.</p>
+                </div>
+                <div class="member">
+                    <img src="https://avatar.iran.liara.run/public/girl" alt="Chiara">
+                    <p><strong>Frechin, Chiara</strong></p>
+                    <p><br>Responsable du menu multijoueur et de l'implementation des musiques.</br><br> </br>Initiée à l’univers de l’informatique et du jeu vidéo dès mon enfance par
+                        mon père, j’ai eu la chance de créer et d’expérimenter divers logiciels depuis l’âge
+                        de 10 ans. Ce projet me donne l’opportunité d’apprendre à collaborer en équipe
+                        tout en élargissant mes compétences en C#, domaine dans lequel je n’avais jusqu’à
+                        présent travaillé qu’en Python et en Java.</p>
+                </div>
+                <div class="member">
+                    <img src="https://avatar.iran.liara.run/public/girl" alt="Maëlys">
+                    <p><strong>Garcie, Maëlys</strong></p>
+                    <p><br>Responsable de l'IA et du menu.</br><br> </br>Passionnée par l’informatique et les jeux vidéo depuis le
+                        début du collège, j’ai eu l’occasion de coder un jeu vidéo en groupe en première.
+                        Ce projet me permettra donc d’améliorer mes capacités en programmation et no
+                       tamment en C#, qui est nouveau pour moi. Je suis enthousiaste à l’idée de faire
+                        ce jeu vidéo qui correspond aux jeux auxquels je joue chez moi.</p>
+                </div>
+                <div class="member">
+                    <img src="https://avatar.iran.liara.run/public/girl" alt="Isaline">
+                    <p><strong>Juan-Gaillot, Isaline</strong></p>
+                    <p> <br>Responsable de la création de l'histoire et VFX.</br><br> </br>Étudiante à Epita en première année, j’ai pris par curiosité la spécial
+                        ité NSI en première ainsi qu’en terminale. J’ai fini par m’intéresser au domaine
+                         de l’informatique qui est devenu un domaine indispensable dans tous les secteurs.
+                         De ce fait, j’ai vraiment hâte de réaliser ce projet de jeu vidéo. Le but du projet
+                         est pour moi d’acquérir plus de connaissances en programmation mais aussi plus
+                         généralement dans la création de jeu. Mais aussi évoluer en travaillant en équipe
+                         puisque, dans le métier d’ingénieur, le travail d’équipe est primordial.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section id="roadmap">
+            <h2>Historique du Projet</h2>
+            <div class="roadmap">
+                <div class="step">
+                    <h3>Étape 1 : Créer une Map et les premières fonctionnalités</h3>
+                    <p>Création d'une map et création des personnages, tout en gardant des models basiques</p>
+                </div>
+                <div class="step">
+                    <h3>Étape 2 : Ajout de Nouvelles Fonctionnalités et de nouveaux modèles</h3>
+                    <p>La map commence a être travaillé, les mécaniques de gameplay sont peaufinnées, les modèles commencent à être faits.</p>
+                </div>
+                <div class="step">
+                    <h3>Étape 3 : Mise en forme finale</h3>
+                    <p>Tous les modèles 3d ainsi que la map sont finis, les élements de narration écrits et la musique implémentée.</p>
+                </div>
+                <div class="step">
+                    <h3>Étape 4 : Playtest et Debug</h3>
+                    <p>Le jeu est testé et débuggué, avant sa publication finale.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+<section id="timeline">
+    <h2>Chronologie</h2>
+    <div class="timeline">
+        <div class="event left">
+            <h3>Janvier 2025</h3>
+            <p>Première présentation du projet.</p>
+        </div>
+        <div class="event right">
+            <h3>Février 2025</h3>
+            <p>Implémentations des personnages et finissions de la Map.</p>
+        </div>
+        <div class="event left">
+            <h3>Mars 2025</h3>
+            <p>Mécaniques de jeu finalisées et implémentées.</p>
+        </div>
+        <div class="event right">
+            <h3>Avril  2025</h3>
+            <p>Implémentations des musiques et effets sonores, rafinements graphiques.</p>
+        </div>
+        <div class="event left">
+            <h3>Mai  2031</h3>
+            <p>Notre jeu est parfaitement jouable et donc le projet est finalisé.</p>
+        </div>
+    </div>
+</section>
+
+        <!-- Liens et ressources -->
+        <section id="resources">
+            <h2>Ressources Utilisées</h2>
+            <ul>
+                <li>Software : Unity, Blender, FlStudio</li>
+                <li>Langage : C#, Python, HTML, JavaScript, CSS</li>
+                <li>Médias : Responsables création de la maison et des personnages</li> 
+                <li>Main d'oeuvre : Petit pakistannais</li>
+            </ul>
+        </section>
+
+        <!-- Téléchargements -->
+        <section id="downloads">
+            <h2>Téléchargements</h2>
+            <div class="downloads">
+                <a href="#">Télécharger le rapport complet</a>
+                <a href="#">Télécharger la version allégée</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Projet de Soutenance. S.O.T.F. Tous droits réservés.</p>
+    </footer>
+    <button id="scrollTop" onclick="scrollToTop()">&#8679;</button>
+
+<script>
+    // fonction pour scroller
+    function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Fonction pour générer un nombre aléatoire dans un intervalle donné
+    function getRandomMargin(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min; // 
+    }
+
+    // Appliquer des marges aléatoires entre chaque événement
+    window.onload = function() {
+        const events = document.querySelectorAll('.timeline .event'); // Récupérer tous les événements
+        
+        // marge de départ
+        let previousEventBottom = 0;
+
+        events.forEach(function(event, index) {
+            if (index > 0) {
+                const randomMargin = getRandomMargin(0, 150);
+                
+                // Appliquer la marge au dessus de l'événement (marge vers le bas de l'événement précédent)
+                event.style.marginTop = `${randomMargin}px`;
+            }
+
+            const eventHeight = event.offsetHeight;
+            previousEventBottom = event.offsetTop + eventHeight;
+        });
+    };
+</script>
+
+<body>
+</html>
