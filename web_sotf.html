@@ -13,6 +13,7 @@
             background-color: #f4f4f9;
             color: #333;
         }
+
         header {
             background-color: #000;
             color: #fff;
@@ -21,39 +22,11 @@
             flex-direction: column;
             align-items: flex-start;
         }
-
         header h1 {
             font-family: 'Times New Roman', Times, serif;
             font-size: 40px;
             margin: 0;
             margin-bottom: 10px;
-        }
-
-        nav {
-            display: flex;
-            gap: 15px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 25px;
-        }
-
-        nav a:hover {
-            color: #b0b0b0;
-        }
-        main {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: auto;
-        }
-        section {
-            margin-bottom: 3rem;
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
         h2 {
             color: black;
@@ -61,6 +34,34 @@
             border-bottom: 2px solid black;
             padding-bottom: 0.5rem;
         }
+        
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 25px;
+        }
+        nav a:hover {
+            color: #b0b0b0;
+        }
+        
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
         .members {
             display: inline-flex;
             flex-wrap: wrap;
@@ -69,6 +70,8 @@
         }
         .member {
             background: #ecf0f1;
+            margin-bottom: 20px;
+            border: 1px solid #ecf0f1;
             border-radius: 8px;
             padding: 1.5rem;
             text-align: center;
@@ -82,6 +85,7 @@
             margin-bottom: 0.5rem;
             border: 2px solid black;
         }
+
         .roadmap {
             display: flex;
             gap: 1.5rem;
@@ -97,40 +101,32 @@
             text-align: center;
         }
         
-
-
         .timeline {
             position: relative;
             margin: 2rem 50%;
             padding: 2rem 0;
             width: 80%;
-            border-left: 4px solid black; /* Grand trait central */
+            border-left: 4px solid black;
         }
-
         .timeline .event {
             position: relative;
-            width: 45%; /* Chaque événement occupe 45% de la largeur */
+            width: 45%;
             margin: 1.5rem 0;
             padding: 1rem 2rem;
             background: #ecf0f1;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
-
-        /* Positionnement gauche/droite*/
         .timeline .event.left {
             left: 0;
             transform: translateX(-110%);
             text-align: right;
         }
-
         .timeline .event.right {
             left: 0;
             transform: translateX(10%);
             text-align: left;
         }
-
-        /* Points */
         .timeline .event:before {
             content: "";
             position: absolute;
@@ -144,17 +140,12 @@
             border-radius: 50%;
             z-index: 1;
         }
-
-
         .timeline .event.left:before {
             left: calc(110% - 1px);
         }
-
         .timeline .event.right:before {
             left: calc(-10% - 1px);
         }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .timeline {
                 width: 90%;
@@ -186,6 +177,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         footer {
             background-color: black;
             color: white;
@@ -194,6 +186,7 @@
             margin-top: 2rem;
             box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .downloads a {
             display: inline-block;
             margin: 0.5rem 0;
@@ -207,6 +200,7 @@
         .downloads a:hover {
             background-color: grey;
         }
+
         #scrollTop {
             position: fixed;
             bottom: 25px;
@@ -228,6 +222,17 @@
             background-color: #b0b0b0;
         }
 
+        .texte {
+            overflow: hidden;
+            transition: height 0.5s ease;
+            height: 0;
+        }
+        .texte.show {
+            max-height: 500px;
+        }
+        button {
+            margin-bottom: 10px;
+        }
 
     </style>
 </head>
@@ -244,32 +249,39 @@
         </nav>
     </header>
     <main>
-        <!-- Présentation des membres -->
         <section id="members">
             <h2>Membres du Projet</h2>
             <div class="members">
                 <div class="member">
-                    <img src="https://avatar.iran.liara.run/public/girl" alt="Valentina">
+                    <img src="valentina.png" alt="Valentina">
                     <p><strong>Durtez Barrientos, Valentina</strong></p>
+                    <button onclick="toggleText(this)">Voir plus</button>
+                    <div class="texte">
                     <p><br>Responsable de la création des énigmes et du site web.</br><br> </br>Je suis une personne passionnée par l’informatique. Mon aventure
                         dans ce domaine a commencé en classe de première. Depuis l’annonce de la créa
                        tion du projet, je me suis intéressée à tous les aspects de la création de jeux, qu’ils
                         soient techniques ou créatifs. Que ce soit le développement de code, la conception
                         graphique, ou la narration, chaque étape du processus de création d’un jeu me
                         fascine et me motive à en apprendre toujours plus.</p>
+                    </div>
                 </div>
                 <div class="member">
-                    <img src="https://avatar.iran.liara.run/public/girl" alt="Maëlys">
+                    <img src="maelys.png" alt="Maëlys">
                     <p><strong>Garcie, Maëlys</strong></p>
+                    <button onclick="toggleText(this)">Voir plus</button>
+                    <div class="texte">
                     <p><br>Responsable de l'IA et du menu.</br><br> </br>Passionnée par l’informatique et les jeux vidéo depuis le
                         début du collège, j’ai eu l’occasion de coder un jeu vidéo en groupe en première.
                         Ce projet me permettra donc d’améliorer mes capacités en programmation et no
                        tamment en C#, qui est nouveau pour moi. Je suis enthousiaste à l’idée de faire
                         ce jeu vidéo qui correspond aux jeux auxquels je joue chez moi.</p>
+                    </div>
                 </div>
                 <div class="member">
-                    <img src="https://avatar.iran.liara.run/public/girl" alt="Isaline">
+                    <img src="isaline.png" alt="Isaline">
                     <p><strong>Juan-Gaillot, Isaline</strong></p>
+                    <button onclick="toggleText(this)">Voir plus</button>
+                    <div class="texte">
                     <p> <br>Responsable de la création de l'histoire et VFX.</br><br> </br>Étudiante à Epita en première année, j’ai pris par curiosité la spécial
                         ité NSI en première ainsi qu’en terminale. J’ai fini par m’intéresser au domaine
                          de l’informatique qui est devenu un domaine indispensable dans tous les secteurs.
@@ -277,18 +289,21 @@
                          est pour moi d’acquérir plus de connaissances en programmation mais aussi plus
                          généralement dans la création de jeu. Mais aussi évoluer en travaillant en équipe
                          puisque, dans le métier d’ingénieur, le travail d’équipe est primordial.</p>
+                    </div>
                 </div>
                 <div class="member">
-                    <img src="https://avatar.iran.liara.run/public/boy" alt="Valentin">
+                    <img src="valentin.png" alt="Valentin">
                     <p><strong>Bac--Lecocq, Valentin</strong></p>
+                    <button onclick="toggleText(this)">Voir plus</button>
+                    <div class="texte">
                     <p><br>Responsable de la création de la map et personnages ainsi que des mécaniques de jeu.</br><br> </br>Tombé dans les jeux vidéo dès un très jeune âge, ma passion pour ce
                         domaine m’a amené à expérimenter la programmation par le biais du modding de mes jeux favoris, et cela m’a permis de me familiariser avec les outils nécessaires à
                         la création d’un jeu.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Roadmap -->
         <section id="roadmap">
             <h2>Historique du Projet</h2>
             <div class="roadmap">
@@ -311,34 +326,33 @@
             </div>
         </section>
 
-        <!-- Timeline -->
-<section id="timeline">
-    <h2>Chronologie</h2>
-    <div class="timeline">
-        <div class="event left">
-            <h3>Janvier 2025</h3>
-            <p>Première présentation du projet.</p>
-        </div>
-        <div class="event right">
-            <h3>Février 2025</h3>
-            <p>Implémentations des personnages et finissions de la Map.</p>
-        </div>
-        <div class="event left">
-            <h3>Mars 2025</h3>
-            <p>Mécaniques de jeu finalisées et implémentées.</p>
-        </div>
-        <div class="event right">
-            <h3>Avril  2025</h3>
-            <p>Implémentations des musiques et effets sonores, rafinements graphiques.</p>
-        </div>
-        <div class="event left">
-            <h3>Mai  2025</h3>
-            <p>Notre jeu est parfaitement jouable et donc le projet est finalisé.</p>
-        </div>
-    </div>
-</section>
 
-        <!-- Liens et ressources -->
+        <section id="timeline">
+            <h2>Chronologie</h2>
+            <div class="timeline">
+                <div class="event left">
+                    <h3>Janvier 2025</h3>
+                    <p>Première présentation du projet.</p>
+                </div>
+                <div class="event right">
+                    <h3>Février 2025</h3>
+                    <p>Implémentations des personnages et finissions de la Map.</p>
+                </div>
+                <div class="event left">
+                    <h3>Mars 2025</h3>
+                    <p>Mécaniques de jeu finalisées et implémentées.</p>
+                </div>
+                <div class="event right">
+                    <h3>Avril  2025</h3>
+                    <p>Implémentations des musiques et effets sonores, rafinements graphiques.</p>
+                </div>
+                <div class="event left">
+                    <h3>Mai  2025</h3>
+                    <p>Notre jeu est parfaitement jouable et donc le projet est finalisé.</p>
+                </div>
+            </div>
+        </section>
+
         <section id="resources">
             <h2>Ressources Utilisées</h2>
             <ul>
@@ -348,7 +362,6 @@
             </ul>
         </section>
 
-        <!-- Téléchargements -->
         <section id="downloads">
             <h2>Téléchargements</h2>
             <div class="downloads">
@@ -362,37 +375,60 @@
     </footer>
     <button id="scrollTop" onclick="scrollToTop()">&#8679;</button>
 
-<script>
-    // fonction pour scroller
-    function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    <script>
+        //fonction pour derouler
+        function toggleText(button) {
+            const texte = button.nextElementSibling;
 
-    // Fonction pour générer un nombre aléatoire dans un intervalle donné
-    function getRandomMargin(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min; // 
-    }
-
-    // Appliquer des marges aléatoires entre chaque événement
-    window.onload = function() {
-        const events = document.querySelectorAll('.timeline .event'); // Récupérer tous les événements
-        
-        // marge de départ
-        let previousEventBottom = 0;
-
-        events.forEach(function(event, index) {
-            if (index > 0) {
-                const randomMargin = getRandomMargin(0, 150);
+            if (!texte.classList.contains('open')) {
+                texte.style.height = texte.scrollHeight + 'px';
+                texte.classList.add('open');
+                button.textContent = "Voir moins";
                 
-                // Appliquer la marge au dessus de l'événement (marge vers le bas de l'événement précédent)
-                event.style.marginTop = `${randomMargin}px`;
+                texte.addEventListener('transitionend', function setAuto() {
+                    texte.style.height = 'auto';
+                    texte.removeEventListener('transitionend', setAuto);
+                });
+            } 
+
+            else {
+                texte.style.height = texte.scrollHeight + 'px';
+                texte.offsetHeight;
+                texte.style.height = '0px';
+                texte.classList.remove('open');
+                button.textContent = "Voir plus";
             }
+        }
+        
+        // fonction pour scroller
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            const eventHeight = event.offsetHeight;
-            previousEventBottom = event.offsetTop + eventHeight;
-        });
-    };
-</script>
+        // Fonction pour générer un nombre aléatoire dans un intervalle donné
+        function getRandomMargin(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min; // 
+        }
 
-<body>
+        // Appliquer des marges aléatoires entre chaque événement
+        window.onload = function() {
+            const events = document.querySelectorAll('.timeline .event'); // Récupérer tous les événements
+        
+            // marge de départ
+            let previousEventBottom = 0;
+
+            events.forEach(function(event, index) {
+                if (index > 0) {
+                    const randomMargin = getRandomMargin(0, 150);
+                
+                    // Appliquer la marge au dessus de l'événement (marge vers le bas de l'événement précédent)
+                    event.style.marginTop = `${randomMargin}px`;
+                }
+
+                const eventHeight = event.offsetHeight;
+                previousEventBottom = event.offsetTop + eventHeight;
+            });
+        };
+    </script>
+</body>
 </html>
